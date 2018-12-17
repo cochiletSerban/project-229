@@ -1,0 +1,24 @@
+{
+  "name": "project-229",
+  "version": "1.0.0",
+  "description": "software for remote controlling club 229 lights / smoke machine ",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cochiletSerban/project-229.git"
+  },
+  "keywords": [
+    "iot",
+    "arduino",
+    "club299"
+  ],
+  "author": "cochiletSerban",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cochiletSerban/project-229/issues"
+  },
+  "homepage": "https://github.com/cochiletSerban/project-229#readme"
+}
