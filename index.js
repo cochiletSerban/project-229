@@ -17,5 +17,11 @@ board.on('ready', function () {
     console.log('connection severed on socket:', socket.id + ' ' + io.engine.clientsCount)
     var led = new five.Led(2)
     led.on()
+
+    socket.on('disconnect', (reason) => {
+      console.log('one client dissconnected : ' + reason)
+      if (io.engine.clientsCount === 0) led.off()
+    })
+
   })
 })
