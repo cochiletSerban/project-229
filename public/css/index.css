@@ -1,5 +1,5 @@
 @import 'helpers.css';
-@import "../header-component/_header.css";
+@import "../header-component/header.css";
 :root {
     --myOrange:#e84e11;
     --myBlue:#296293;

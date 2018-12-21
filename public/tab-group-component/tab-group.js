@@ -1,0 +1,3 @@
+function tabGroup() {
+  $('.tabs').tabs()
+}
