@@ -13,4 +13,4 @@ $(function () {
     $('#tab-group-component').html(data)
     tabGroup() // executes tab-group-component js code
   })
-}) 
+})
