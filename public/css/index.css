@@ -1,9 +1,4 @@
 @import 'helpers.css';
 @import "../header-component/header.css";
-:root {
-    --myOrange:#e84e11;
-    --myBlue:#296293;
-    --myYellow:#ffea00;
-    --myBraun:#7d5348;
-  }
-
+@import "../tab-group-component/tab-group.css";
+@import "_vars.css"

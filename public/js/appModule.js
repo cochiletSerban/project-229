@@ -6,11 +6,11 @@
 
 $(function () { 
   $.get('header-component/header.html', function (data) {
-    $('#header').html(data)
+    $('#header-component').html(data)
   })
 
   $.get('tab-group-component/tab-group.html', function (data) {
-    $('#tab-group').html(data)
+    $('#tab-group-component').html(data)
     tabGroup() // executes tab-group-component js code
   })
 }) 

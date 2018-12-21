@@ -4,6 +4,7 @@
     animation: animatedBackground 100s linear infinite;
     height: 150px;
     border-bottom: 5px solid var(--myBlue);
+    margin-bottom: 10px;
 }
 
 .header > img {
