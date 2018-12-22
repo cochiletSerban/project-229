@@ -6,7 +6,7 @@ function tabGroup () {
   let arrayOfSliders = document.querySelectorAll('input[type=range]')
   M.Range.init(arrayOfSliders)
 
-  $('#picker').spectrum({
+  $('#moodRoofPicker').spectrum({
     showButtons: false
   })
   $('#picker1').spectrum({

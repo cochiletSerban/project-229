@@ -4,7 +4,7 @@
 // referenced elements in the DOM 
 // similar with angular's afterViewInit() :)
 
-$(function () { 
+$(function () {
   $.get('header-component/header.html', function (data) {
     $('#header-component').html(data)
   })
@@ -13,4 +13,5 @@ $(function () {
     $('#tab-group-component').html(data)
     tabGroup() // executes tab-group-component js code
   })
+
 })
