@@ -6,8 +6,5 @@ function componentsLoaded() {
     let myId = socket.io.engine.id
     console.log(myId)
   })
-  initHeaders(getUiElements().headers, "club")
-  bodyStyles = window.getComputedStyle(document.body)
-  console.log(bodyStyles.getPropertyValue('--myOrange'))
-   
+  initHeaders(getUiElements(), "maxLight")
 }
