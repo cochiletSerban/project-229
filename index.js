@@ -10,18 +10,18 @@ const io = require('socket.io')(server)
 
 app.use(express.static('public')) // static serve;
 
-var board = new five.Board({ port: 'COM4', repl: false })
+// var board = new five.Board({ port: 'COM4', repl: false })
 
-board.on('ready', function () {
-  io.on('connection', (socket) => {
-    console.log('connection severed on socket:', socket.id + ' ' + io.engine.clientsCount)
-    var led = new five.Led(2)
-    led.on()
+// board.on('ready', function () {
+//   io.on('connection', (socket) => {
+//     console.log('connection severed on socket:', socket.id + ' ' + io.engine.clientsCount)
+//     var led = new five.Led(2)
+//     led.on()
 
-    socket.on('disconnect', (reason) => {
-      console.log('one client dissconnected : ' + reason)
-      if (io.engine.clientsCount === 0) led.off()
-    })
+//     socket.on('disconnect', (reason) => {
+//       console.log('one client dissconnected : ' + reason)
+//       if (io.engine.clientsCount === 0) led.off()
+//     })
 
-  })
-})
+//   })
+// })
