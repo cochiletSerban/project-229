@@ -5,7 +5,6 @@ function tabGroup () {
   // fixes materialize slider tumb react/vue bug
   let arrayOfSliders = document.querySelectorAll('input[type=range]')
   M.Range.init(arrayOfSliders)
-
   $('#moodRoofPicker').spectrum({
     showButtons: false
   })

@@ -1,4 +1,5 @@
 let roomState = {
+  mode:null,
   whiteStrip: null,
   state229: {
     state2: rgbState,

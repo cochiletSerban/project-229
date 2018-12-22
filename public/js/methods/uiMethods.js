@@ -22,3 +22,29 @@ function getUiElements () { // retrive ui elem
   }
   return { headers, switches, sliders, pickers }
 }
+
+function getCssVars (varName) {
+  varName = '--' + varName
+  let bodyStyles = window.getComputedStyle(document.body)
+  return bodyStyles.getPropertyValue(varName)
+}
+// .find(div.col.s9.left-align > h5)
+function initHeaders (uiHeaders, roomState) {
+  switch (roomState) {
+    case 'club':
+      uiHeaders.club229Header.css('background-color', getCssVars('myOrange'))
+      break
+    case 'maxLight':
+      uiHeaders.club229Header.css('background-color', 'var(myOrange)')
+      uiHeaders.club229Header.find('div.col.s9.left-align > h5').text('yolo')
+      break
+    case 'moodLight':
+      break
+    case 'lobby':
+      break 
+  }
+}
+
+function initUi (uiElements, roomState) {
+
+}
