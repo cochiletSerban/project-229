@@ -1,3 +1,5 @@
+
+
 // retrives all the important ui elemets
 function getUiElements () {
   let headers = {
@@ -26,9 +28,9 @@ function getUiElements () {
 }
 
 // init all the pickers
-function initPickers (pickers) {
-  for (const key of Object.keys(pickers)) {
-    pickers[key].spectrum({
+function initPickers () {
+  for (const key of Object.keys(uiElements.pickers)) {
+    uiElements.pickers[key].spectrum({
       showButtons: false
     })
   }
@@ -64,9 +66,12 @@ function getModeHeaderVals (roomState) {
 
 // sets all switches to off besides the one recived as param
 function resetSwitches (dontReset) {
+
   let all = false
   if (dontReset === undefined) all = true
-  let switches = getUiElements().switches
+  
+  let switches = uiElements.switches
+  console.log(switches);
   for (const key of Object.keys(switches)) {
     if (all || switches[key][0].id !== dontReset[0].id ) {
       switches[key].prop('checked', false)
@@ -77,8 +82,10 @@ function resetSwitches (dontReset) {
 // resets all headers default values besides the one recived as param
 function resetHeaders (dontReset) {
   let all = false
+
+  
   if (dontReset === undefined) all = true
-  let headers = getUiElements().headers
+  let headers = uiElements.headers
   for (const key of Object.keys(headers)) {
     if (all || headers[key][0].id !== dontReset[0].id) {
       headers[key].css('background-color', 'white')
@@ -89,8 +96,7 @@ function resetHeaders (dontReset) {
 }
 
 // sets the color, brightness, slider, picker values of the mod controls
-function initModes (uiElements, roomState) {
-  console.log(roomState)
+function initModes () {
   switch (roomState.modeName) {
     case 'off' :
       resetSwitches()
@@ -108,6 +114,8 @@ function initModes (uiElements, roomState) {
       uiElements.headers.maxLightHeader.css('background-color', getCssVars('myOrange'))
       uiElements.headers.maxLightHeader.find('div.col.s9.left-align > h5').text('Max light @ ' + getModeHeaderVals(roomState))
       uiElements.switches.maxLightSwitch.prop('checked', true)
+     
+      
       resetSwitches(uiElements.switches.maxLightSwitch)
       resetHeaders(uiElements.headers.maxLightHeader)
       // sliders
@@ -142,27 +150,19 @@ function initModes (uiElements, roomState) {
 
 // sets the slider headers picker of all the ui based on a recieved state
 function initUi () {
-  // fake test state
-  let state = new RoomState()
-  state.modeName = 'maxLight'
-  state.whiteStrip = 255
-  state.roof.brightness = 240
-  state.roof.color = 'blue'
-  state.state229.state2.brightness = 127
-  state.state229.state22.brightness = 127
-  state.state229.state229.brightness = 127
-
-  let uiElements = getUiElements()
-  initPickers(uiElements.pickers)
-  initModes(uiElements, state)
-  listenToInputs(uiElements)
+  // global var after component init
+  window.uiElements = getUiElements()
+  initPickers()
+  initModes()
+  listenToInputs()
 }
 
 function updateUi (roomState) {
   initModes(getUiElements(), roomState)
 }
 
-function updateState (roomState) {
-  updateUi(roomState)
+function updateState (newState) {
+  roomState = newState
+  updateUi()
   // send new state to server
 }
