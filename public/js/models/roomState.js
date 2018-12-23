@@ -1,12 +1,14 @@
-let roomState = {
-  mode:null,
-  whiteStrip: null,
-  state229: {
-    state2: rgbState,
-    state22: rgbState,
-    state229: rgbState
-  },
-  roof: rgbState,
-  wallGreen: null,
-  wallBlue: null
+class RoomState {
+  constructor () {
+    this.modeName = ''
+    this.whiteStrip = 0
+    this.state229 = {
+      state2: new RgbState(),
+      state22: new RgbState(),
+      state229: new RgbState()
+    }
+    this.roof = new RgbState()
+    this.wallGreen = 0
+    this.wallBlue = 0
+  }
 }
