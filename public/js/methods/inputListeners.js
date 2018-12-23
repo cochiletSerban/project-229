@@ -6,7 +6,9 @@ function listenToInputs () {
 
   // switches
   for (const key of Object.keys(uiElements.switches)) {
-    uiElements.switches[key].on('click', () => {
+    uiElements.switches[key].on('click', (e) => {
+      // e.stopPropagation()
+      // e.stopImmediatePropagation()
       if (uiElements.switches[key].is(':checked')) {
         getMode(key, true)
       } else {
