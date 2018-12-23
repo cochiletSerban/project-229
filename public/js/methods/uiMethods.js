@@ -26,10 +26,9 @@ function getUiElements () {
 }
 
 // init all the pickers
-function initPickers () {
-  let uiPickers = getUiElements().pickers
-  for (const key of Object.keys(uiPickers)) {
-    uiPickers[key].spectrum({
+function initPickers (pickers) {
+  for (const key of Object.keys(pickers)) {
+    pickers[key].spectrum({
       showButtons: false
     })
   }
@@ -63,19 +62,54 @@ function getModeHeaderVals (roomState) {
   }
 }
 
+// sets all switches to off besides the one recived as param
+function resetSwitches (dontReset) {
+  let all = false
+  if (dontReset === undefined) all = true
+  let switches = getUiElements().switches
+  for (const key of Object.keys(switches)) {
+    if (all || switches[key][0].id !== dontReset[0].id ) {
+      switches[key].prop('checked', false)
+    }
+  }
+}
+
+// resets all headers default values besides the one recived as param
+function resetHeaders (dontReset) {
+  let all = false
+  if (dontReset === undefined) all = true
+  let headers = getUiElements().headers
+  for (const key of Object.keys(headers)) {
+    if (all || headers[key][0].id !== dontReset[0].id) {
+      headers[key].css('background-color', 'white')
+      let currentVal = headers[key].find('div.col.s9.left-align > h5').text()
+      headers[key].find('div.col.s9.left-align > h5').text(currentVal.split('@')[0])
+    }
+  }
+}
+
 // sets the color, brightness, slider, picker values of the mod controls
 function initModes (uiElements, roomState) {
+  console.log(roomState)
   switch (roomState.modeName) {
+    case 'off' :
+      resetSwitches()
+      resetHeaders()
+      break
     case 'club':
       // header
       uiElements.headers.club229Header.css('background-color', getCssVars('myOrange'))
       uiElements.switches.club229Switch.prop('checked', true)
+      resetSwitches(uiElements.switches.club229Switch)
+      resetHeaders(uiElements.headers.club229Header)
       break
     case 'maxLight':
       // header
       uiElements.headers.maxLightHeader.css('background-color', getCssVars('myOrange'))
       uiElements.headers.maxLightHeader.find('div.col.s9.left-align > h5').text('Max light @ ' + getModeHeaderVals(roomState))
       uiElements.switches.maxLightSwitch.prop('checked', true)
+      resetSwitches(uiElements.switches.maxLightSwitch)
+      resetHeaders(uiElements.headers.maxLightHeader)
       // sliders
       let brightness229 = (roomState.state229.state2.brightness +
         roomState.state229.state22.brightness + roomState.state229.state229.brightness) / 3
@@ -89,6 +123,8 @@ function initModes (uiElements, roomState) {
       uiElements.headers.moodHeader.css('background-color', headerState.color)
       uiElements.headers.moodHeader.find('div.col.s9.left-align > h5').text('Mood light @ ' + headerState.brightness)
       uiElements.switches.moodSwitch.prop('checked', true)
+      resetSwitches(uiElements.switches.moodSwitch)
+      resetHeaders(uiElements.headers.moodHeader)
       // slider
       uiElements.sliders.moodRoofSlider.val(roomState.roof.brightness)
       // picker
@@ -98,6 +134,8 @@ function initModes (uiElements, roomState) {
       // header
       uiElements.headers.lobbyHeader.css('background-color', getCssVars('myOrange'))
       uiElements.switches.lobbySwitch.prop('checked', true)
+      resetSwitches(uiElements.switches.lobbySwitch)
+      resetHeaders(uiElements.headers.lobbyHeader)
       break
   }
 }
@@ -106,14 +144,25 @@ function initModes (uiElements, roomState) {
 function initUi () {
   // fake test state
   let state = new RoomState()
-  state.modeName = 'moodLight'
+  state.modeName = 'maxLight'
   state.whiteStrip = 255
   state.roof.brightness = 240
   state.roof.color = 'blue'
   state.state229.state2.brightness = 127
   state.state229.state22.brightness = 127
   state.state229.state229.brightness = 127
-  
-  initPickers()
-  initModes(getUiElements(), state)
+
+  let uiElements = getUiElements()
+  initPickers(uiElements.pickers)
+  initModes(uiElements, state)
+  listenToInputs(uiElements)
+}
+
+function updateUi (roomState) {
+  initModes(getUiElements(), roomState)
+}
+
+function updateState (roomState) {
+  updateUi(roomState)
+  // send new state to server
 }

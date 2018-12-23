@@ -6,6 +6,7 @@ function componentsLoaded() {
     let myId = socket.io.engine.id
     console.log(myId)
   })
+  
   initUi()
 
 }
