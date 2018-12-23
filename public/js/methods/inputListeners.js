@@ -14,10 +14,20 @@ function listenToInputs () {
       }
     })
   }
+
+  uiElements.pickers.moodRoofPicker.on('move.spectrum', function (e, color) {
+    if (canSliderUpdateState('moodLight')) {
+      let state = new RoomState()
+      state = JSON.parse(JSON.stringify(roomState))
+      state.roof.color = color.toHexString()
+      updateState(state) 
+    }
+  })
 }
 
 function determineStateUpdateForSwitches (ev, modeName) {
   let state = new RoomState()
+  state = JSON.parse(JSON.stringify(roomState))
   if (ev) {
     state.modeName = modeName
   } else if (!ev) {

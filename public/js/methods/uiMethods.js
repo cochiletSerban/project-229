@@ -158,11 +158,13 @@ function initUi () {
 }
 
 function updateUi (roomState) {
-  initModes(getUiElements(), roomState)
+  initModes(roomState)
 }
 
 function updateState (newState) {
   roomState = newState
+  console.log(roomState);
+  
   updateUi()
   // send new state to server
 }
