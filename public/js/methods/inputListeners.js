@@ -1,8 +1,6 @@
 function listenToInputs () {
-
   // for sliders
   for (const key of Object.keys(uiElements.sliders)) {
-    console.log(key)
     uiElements.sliders[key].on('input', getSliders.bind(null, key))
   }
 
@@ -18,7 +16,7 @@ function listenToInputs () {
   }
 }
 
-function determineStateUpdateForSwitches(ev, modeName) {
+function determineStateUpdateForSwitches (ev, modeName) {
   let state = new RoomState()
   if (ev) {
     state.modeName = modeName
@@ -28,7 +26,7 @@ function determineStateUpdateForSwitches(ev, modeName) {
   return state
 }
 
-function getMode(modeName, ev) { // parses data from inputs & updates state
+function getMode (modeName, ev) { // parses data from inputs & updates state
   let state = new RoomState()
   switch (modeName) {
     case 'club229Switch':
@@ -47,19 +45,49 @@ function getMode(modeName, ev) { // parses data from inputs & updates state
   updateState(state)
 }
 
-function sliderUpdateState(modeName) {
-  if (state.modeName === modeName) {
+// makes sure you can only update the current mode
+function canSliderUpdateState (modeName) {
+  if (roomState.modeName === modeName) {
     return true
   } else {
     return false
   }
-
 }
 
-function getSliders(handle, ev) {
-  switches = getUiElements().switches
-
+function getSliders (handle, ev) {
+  let state = new RoomState()
+  state = JSON.parse(JSON.stringify(roomState))
+  
   switch (handle) {
     case 'maxLightWhiteStripSlider' :
+      if (canSliderUpdateState('maxLight')) {
+        state.whiteStrip = parseInt(ev.target.value)
+        updateState(state)
+      }
+      break
+
+    case 'maxLight229slider':
+      if (canSliderUpdateState('maxLight')) {
+        state.state229.state2.brightness = parseInt(ev.target.value)
+        state.state229.state22.brightness = state.state229.state2.brightness
+        state.state229.state229.brightness = state.state229.state2.brightness
+        updateState(state)
+      }
+      break
+
+    case 'maxLightRoofslider':
+      if (canSliderUpdateState('maxLight')) {
+        state.roof.brightness = parseInt(ev.target.value)
+        updateState(state)
+      }
+      break
+
+    case 'moodRoofSlider':
+      if (canSliderUpdateState('moodLight')) {
+        state.roof.brightness = parseInt(ev.target.value)
+        updateState(state)
+      }
+      break
   }
+
 }

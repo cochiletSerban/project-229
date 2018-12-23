@@ -45,11 +45,12 @@ function getCssVars (varName) {
 
 // maps from state to procent 255 = 100%
 function convertSateToProc (x, inMin, inMax, outMin, outMax) {
-  return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin
+  let newValue =  (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin
+  return parseFloat(Math.round(newValue * 100) / 100).toFixed(2) // limits to 2 decimal places
 }
 
 // retrun headers brightness/color values from RoomState
-function getModeHeaderVals (roomState) {
+function getModeHeaderVals () {
   switch (roomState.modeName) {
     case 'maxLight':
       let brightness229 = (roomState.state229.state2.brightness +
@@ -71,7 +72,6 @@ function resetSwitches (dontReset) {
   if (dontReset === undefined) all = true
   
   let switches = uiElements.switches
-  console.log(switches);
   for (const key of Object.keys(switches)) {
     if (all || switches[key][0].id !== dontReset[0].id ) {
       switches[key].prop('checked', false)
@@ -112,22 +112,22 @@ function initModes () {
     case 'maxLight':
       // header
       uiElements.headers.maxLightHeader.css('background-color', getCssVars('myOrange'))
-      uiElements.headers.maxLightHeader.find('div.col.s9.left-align > h5').text('Max light @ ' + getModeHeaderVals(roomState))
+      uiElements.headers.maxLightHeader.find('div.col.s9.left-align > h5').text('Max light @ ' + getModeHeaderVals())
       uiElements.switches.maxLightSwitch.prop('checked', true)
-     
-      
       resetSwitches(uiElements.switches.maxLightSwitch)
       resetHeaders(uiElements.headers.maxLightHeader)
       // sliders
       let brightness229 = (roomState.state229.state2.brightness +
         roomState.state229.state22.brightness + roomState.state229.state229.brightness) / 3
+    
+      
       uiElements.sliders.maxLightWhiteStripSlider.val(roomState.whiteStrip)
       uiElements.sliders.maxLight229slider.val(brightness229)
       uiElements.sliders.maxLightRoofslider.val(roomState.roof.brightness)
       break
     case 'moodLight':
       // header
-      let headerState = getModeHeaderVals(roomState)
+      let headerState = getModeHeaderVals()
       uiElements.headers.moodHeader.css('background-color', headerState.color)
       uiElements.headers.moodHeader.find('div.col.s9.left-align > h5').text('Mood light @ ' + headerState.brightness)
       uiElements.switches.moodSwitch.prop('checked', true)
