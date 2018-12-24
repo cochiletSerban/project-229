@@ -1,4 +1,5 @@
-class RoomState {
+const RgbState = require('./RgbState')
+module.exports = class RoomState {
   constructor () {
     this.modeName = 'off'
     this.whiteStrip = 0
@@ -12,3 +13,8 @@ class RoomState {
     this.wallBlue = 0
   }
 }
+
+    // socket.on('disconnect', (reason) => {
+    //   console.log('one client dissconnected : ' + reason)
+    //   if (io.engine.clientsCount === 0) led.off()
+    // })
