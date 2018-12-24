@@ -11,21 +11,22 @@ let initBoard = function initBoard (boardComponents, five) {
   })
   boardComponents.strip22 = new five.Led.RGB({
     pins: {
-      red: 4,
-      green: 5,
-      blue: 6
+      red: 5,
+      green: 6,
+      blue: 7
     },
     isAnode: false
   })
   boardComponents.strip229 = new five.Led.RGB({
     pins: {
-      red: 7,
-      green: 8,
-      blue: 9
+      red: 8,
+      green: 9,
+      blue: 10
     },
     isAnode: false
   })
   boardComponents.stripWhite = new five.Led(10)
+  resetBoard(boardComponents)
 }
 
 let sendStateToBoard = function sendStateToBoard (state, boardComponents) {
@@ -55,9 +56,10 @@ let isLocalMode = function isLocalMode (state) {
 let applyStateToLocal = function applyStateToLocale (state, boardComponents) {
   console.log(state)
   //resetBoard(boardComponents)
-  //boardComponents.strip2.intensity(state.state229.state2.brightness)
-  //boardComponents.strip22.intensity(state.state229.state22.brightness)
-  //boardComponents.strip229.intensity(state.state229.state229.brightness)
+  boardComponents.strip2.intensity(state.state229.state2.brightness)
+  boardComponents.strip22.intensity(state.state229.state22.brightness)
+  boardComponents.strip229.intensity(state.state229.state229.brightness)
+  boardComponents.stripWhite.intensity(state.whiteStrip)
 }
 
 // may not be needed
