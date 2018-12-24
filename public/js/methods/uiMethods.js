@@ -162,9 +162,7 @@ function updateUi (roomState) {
 }
 
 function updateState (newState) {
-  roomState = newState
-  console.log(roomState);
-  
+  roomState = newState  
   updateUi()
-  // send new state to server
+  socket.emit('updateState', roomState)
 }
