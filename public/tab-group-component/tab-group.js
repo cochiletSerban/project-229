@@ -1,34 +1,12 @@
 function tabGroup () {
   $('.tabs').tabs()
   $('.collapsible').collapsible()
-  $('select').formSelect()
+  //$('select').formSelect()
+  $('select').material_select();
   // fixes materialize slider tumb react/vue bug
-  let arrayOfSliders = document.querySelectorAll('input[type=range]')
-  M.Range.init(arrayOfSliders)
+  // let arrayOfSliders = document.querySelectorAll('input[type=range]')
+  // M.Range.init(arrayOfSliders)
 
-  $('#picker').spectrum({
-    showButtons: false
-  })
-  $('#picker1').spectrum({
-    showButtons: false
-  })
-  $('#picker2').spectrum({
-    showButtons: false
-  })
-  $('#picker3').spectrum({
-    showButtons: false
-  })
-  $('#picker4').spectrum({
-    showButtons: false
-  })
-  $('#picker5').spectrum({
-    showButtons: false
-  })
-
-  $('#picker').on('move.spectrum', function (e, color) {
-    color.toHexString() // #ff0000
-    console.log(color.toHexString())
-  })
   $('#picker1').on('move.spectrum', function (e, color) {
     color.toHexString() // #ff0000
     console.log(color.toHexString())
