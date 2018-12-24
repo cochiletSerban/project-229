@@ -1,3 +1,5 @@
+const State = require('../models/RoomState')
+
 let initBoard = function initBoard (boardComponents, five) {
   boardComponents.strip2 = new five.Led.RGB({
     pins: {
@@ -26,18 +28,50 @@ let initBoard = function initBoard (boardComponents, five) {
   boardComponents.stripWhite = new five.Led(10)
 }
 
-let sendStateToBoard = function sendStateToBoard (state) {
-  console.log(state);
-  
+let sendStateToBoard = function sendStateToBoard (state, boardComponents) {
+  if (state.modeName === 'advanced' || state.modeName === 'off') {
+    applyStateToLocal(state, boardComponents)
+  } else {
+    if (isLocalMode(state)) {
+      applyStateToLocal(state, boardComponents)
+    } else {
+      //applyStateToLocal(getLocalState(state), boardComponents)
+      //applyStateToRemote(state, boardComponents) // TO DO
+    }
+  }
 }
 
-let stateIsMode = function stateIsMode (state) {}
+let isLocalMode = function isLocalMode (state) {
+  switch (state.modeName) {
+    case 'maxLight':
+      return "local"
+    case 'moodLight':
+      return "local"
+    default:
+      return "remote"
+  }
+}
 
-let applyState = function applyState (state) {}
+let applyStateToLocal = function applyStateToLocale (state, boardComponents) {
+  console.log(state)
+  //resetBoard(boardComponents)
+  //boardComponents.strip2.intensity(state.state229.state2.brightness)
+  //boardComponents.strip22.intensity(state.state229.state22.brightness)
+  //boardComponents.strip229.intensity(state.state229.state229.brightness)
+}
+
+// may not be needed
+let resetBoard = function resetBoard (boardComponents) {
+  boardComponents.strip2.stop().off()
+  boardComponents.strip22.stop().off()
+  boardComponents.strip229.stop().off()
+  boardComponents.stripWhite.stop().off()
+}
 
 module.exports = {
   initBoard: initBoard,
-  applyState: applyState,
-  stateIsMode: stateIsMode,
-  sendStateToBoard: sendStateToBoard
+  applyStateToLocal: applyStateToLocal,
+  isLocalMode: isLocalMode,
+  sendStateToBoard: sendStateToBoard,
+  resetBoard: resetBoard
 }
