@@ -19,11 +19,10 @@ const throttle = (func, limit) => {
   }
 }
 
-
 function listenToInputs () {
   // for sliders
   for (const key of Object.keys(uiElements.sliders)) {
-    uiElements.sliders[key].on('input', throttle(getSliders.bind(null, key),100))
+    uiElements.sliders[key].on('input', getSliders.bind(null, key))
   }
 
   // switches
@@ -39,7 +38,7 @@ function listenToInputs () {
     })
   }
 
-  uiElements.pickers.moodRoofPicker.on('dragstop.spectrum', function (e, color) {
+  uiElements.pickers.moodRoofPicker.on('move.spectrum', function (e, color) {
     if (canSliderUpdateState('moodLight')) {
       let state = new RoomState()
       state = JSON.parse(JSON.stringify(roomState))

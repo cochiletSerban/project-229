@@ -44,29 +44,26 @@ let applyStateToLocal = function applyStateToLocale (state, boardComponents) {
 }
 
 let applyStateToRemote = function applyStateToRemote (state, board) {
-  console.log('///////////////////////// REMOTE ///////////////////// \n ', state.modeName, state.roof, state.wallGreen, state.wallBlue)
+  //console.log('///////////////////////// REMOTE ///////////////////// \n ', state.modeName, state.roof, state.wallGreen, state.wallBlue)
   let roofColors = getRoofColors(state.roof)
+  let mode
   switch (state.modeName) {
     case 'off':
-      board.io.i2cWrite(8, 0) // mode
+      mode = 0 // mode
       break
     case 'club':
-      board.io.i2cWrite(8, 2) // mode
+      mode = 2  // mode
       break
     case 'lobby':
-      board.io.i2cWrite(8, 3) // mode
+      mode = 3  // mode
       break
     default:
-      board.io.i2cWrite(8, 1) // mode
+      mode = 1  // mode
       break
   }
-  board.io.i2cWrite(8, roofColors.red) // roof red
-  board.io.i2cWrite(8, roofColors.green) // roof green
-  board.io.i2cWrite(8, roofColors.blue) // roof blue
-  board.io.i2cWrite(8, roofColors.brightness) // roof brightness
-  board.io.i2cWrite(8, roofColors.animation) // roof animation
-  board.io.i2cWrite(8, state.wallGreen) // wall green
-  board.io.i2cWrite(8, state.wallBlue) // wall blue
+
+  board.io.i2cWrite(0x08, [mode, roofColors.red, roofColors.green, roofColors.blue,
+    roofColors.brightness, roofColors.animation, state.wallGreen, state.wallBlue])
 }
 
 let getRoofColors = function getRoofColors (roof) {
