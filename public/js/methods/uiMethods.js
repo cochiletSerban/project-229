@@ -44,9 +44,9 @@ function getCssVars (varName) {
 }
 
 // maps from state to procent 255 = 100%
-function convertSateToProc (x, inMin, inMax, outMin, outMax) {
-  let newValue =  (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin
-  return parseFloat(Math.round(newValue * 100) / 100).toFixed(2) // limits to 2 decimal places
+function roundTo2decimals (x) {
+  //let newValue =  (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin
+  return parseFloat(Math.round(x * 100) / 100).toFixed(2) // limits to 2 decimal places
 }
 
 // retrun headers brightness/color values from RoomState
@@ -56,10 +56,10 @@ function getModeHeaderVals () {
       let brightness229 = (roomState.state229.state2.brightness +
         roomState.state229.state22.brightness + roomState.state229.state229.brightness) / 3
       let stateBrightness = (roomState.whiteStrip + brightness229 + roomState.roof.brightness) / 3
-      return convertSateToProc(stateBrightness, 0, 255, 0, 100)
+      return roundTo2decimals(stateBrightness)
     case 'moodLight':
       return {
-        brightness: convertSateToProc(roomState.roof.brightness, 0, 255, 0, 100),
+        brightness: roundTo2decimals(roomState.roof.brightness),
         color: roomState.roof.color
       }
   }

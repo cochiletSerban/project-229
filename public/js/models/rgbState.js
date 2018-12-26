@@ -1,7 +1,7 @@
 class RgbState {
   constructor () {
-    this.color = '#ffffff'
+    this.color = 'rgb(255, 255, 255)'
     this.brightness = 0
-    this.animation = ''
+    this.animation = 0
   }
 }

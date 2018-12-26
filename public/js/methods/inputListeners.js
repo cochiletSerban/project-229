@@ -1,7 +1,29 @@
+const throttle = (func, limit) => {
+  let lastFunc
+  let lastRan
+  return function() {
+    const context = this
+    const args = arguments
+    if (!lastRan) {
+      func.apply(context, args)
+      lastRan = Date.now()
+    } else {
+      clearTimeout(lastFunc)
+      lastFunc = setTimeout(function() {
+        if ((Date.now() - lastRan) >= limit) {
+          func.apply(context, args)
+          lastRan = Date.now()
+        }
+      }, limit - (Date.now() - lastRan))
+    }
+  }
+}
+
+
 function listenToInputs () {
   // for sliders
   for (const key of Object.keys(uiElements.sliders)) {
-    uiElements.sliders[key].on('input', getSliders.bind(null, key))
+    uiElements.sliders[key].on('input', throttle(getSliders.bind(null, key),100))
   }
 
   // switches
@@ -17,12 +39,12 @@ function listenToInputs () {
     })
   }
 
-  uiElements.pickers.moodRoofPicker.on('move.spectrum', function (e, color) {
+  uiElements.pickers.moodRoofPicker.on('dragstop.spectrum', function (e, color) {
     if (canSliderUpdateState('moodLight')) {
       let state = new RoomState()
       state = JSON.parse(JSON.stringify(roomState))
-      state.roof.color = color.toHexString()
-      updateState(state) 
+      state.roof.color = color.toRgbString()
+      updateState(state)
     }
   })
 }
@@ -30,7 +52,7 @@ function listenToInputs () {
 // ////////////////////////////////////// //
 function determineStateUpdateForSwitches (ev, modeName) {
   let state = new RoomState() // creates new blank state on mod chage
-  //state = JSON.parse(JSON.stringify(roomState))
+  // state = JSON.parse(JSON.stringify(roomState))
   if (ev) {
     state.modeName = modeName
   } else if (!ev) {
@@ -71,7 +93,7 @@ function canSliderUpdateState (modeName) {
 function getSliders (handle, ev) {
   let state = new RoomState()
   state = JSON.parse(JSON.stringify(roomState))
-  
+
   switch (handle) {
     case 'maxLightWhiteStripSlider' :
       if (canSliderUpdateState('maxLight')) {
@@ -103,5 +125,4 @@ function getSliders (handle, ev) {
       }
       break
   }
-
 }

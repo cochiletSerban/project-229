@@ -17,13 +17,13 @@ let state = new State()
 let boardComponents = new BoardComponents() // this shit is global in all modules
 
 board.on('ready', function () {
-  boardMethods.initBoard(boardComponents, five)
+  boardMethods.initBoard(boardComponents, five, board)
   io.on('connection', (socket) => {
     console.log('connection severed on socket:', socket.id + ' ' + io.engine.clientsCount)
     connectionMethods.sendInitialState(socket, state)
     socket.on('updateState', (newState) => {
       state = newState
-      boardMethods.sendStateToBoard(state, boardComponents)
+      boardMethods.sendStateToBoard(state, boardComponents, board)
     })
   })
 })
