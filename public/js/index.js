@@ -1,4 +1,4 @@
-const socket = io.connect('http://localhost:3000/')
+const socket = io.connect('192.168.1.101:3000/')
 
 // var roomState = new RoomState()
 // roomState.modeName = 'maxLight'

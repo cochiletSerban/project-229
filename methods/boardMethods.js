@@ -26,7 +26,7 @@ let initBoard = function initBoard (boardComponents, five, board) {
     },
     isAnode: false
   })
-  boardComponents.stripWhite = new five.Led(10)
+  boardComponents.stripWhite = new five.Led(11)
   resetBoard(boardComponents)
 }
 
@@ -36,7 +36,11 @@ let sendStateToBoard = function sendStateToBoard (state, boardComponents, board)
 }
 
 let applyStateToLocal = function applyStateToLocale (state, boardComponents) {
-  //console.log('///////////////////////// LOCAL ///////////////////// \n ', state.modeName, state.state229, state.whiteStrip)
+  if (state.modeName === 'off') {
+    resetBoard(boardComponents)
+    return
+  }
+  console.log('///////////////////////// LOCAL ///////////////////// \n ', state.modeName, state.state229, state.whiteStrip)
   boardComponents.strip2.intensity(state.state229.state2.brightness)
   boardComponents.strip22.intensity(state.state229.state22.brightness)
   boardComponents.strip229.intensity(state.state229.state229.brightness)

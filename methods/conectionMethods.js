@@ -2,7 +2,11 @@ let sendInitialState = function sendState (socket, state) {
   socket.emit('saInceapaNebunia', state)
 }
 
-module.exports = {
+let updateClients = function updateClients (socket, newState) {
+  socket.broadcast.emit('saInceapaNebunia', newState)
+}
 
+module.exports = {
+  updateClients: updateClients,
   sendInitialState: sendInitialState
 }

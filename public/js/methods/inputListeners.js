@@ -51,7 +51,7 @@ function listenToInputs () {
 // ////////////////////////////////////// //
 function determineStateUpdateForSwitches (ev, modeName) {
   let state = new RoomState() // creates new blank state on mod chage
-  // state = JSON.parse(JSON.stringify(roomState))
+  state = JSON.parse(JSON.stringify(roomState))
   if (ev) {
     state.modeName = modeName
   } else if (!ev) {
