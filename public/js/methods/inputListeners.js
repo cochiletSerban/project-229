@@ -59,11 +59,23 @@ function determineStateUpdateForSwitches (ev, modeName) {
       state22: new RgbState(100),
       state229: new RgbState(100)
     }
-    switch(modeName) {
+    switch (modeName) {
       case 'maxLight':
+        state =  new RoomState()
+        state.modeName = modeName
         state.whiteStrip = 100
         state.state229 = state229
         state.roof = new RgbState(100)
+        break
+      case 'moodLight':
+        state =  new RoomState()
+        state.modeName = modeName
+        state.roof = new RgbState(100)
+        state.roof.color = 'rgb(255, 0, 0)'
+        break
+      case 'lobby':
+        state = new RoomState()
+        state.modeName = modeName
         break
     }
   } else if (!ev) {

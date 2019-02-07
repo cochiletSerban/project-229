@@ -58,6 +58,8 @@ function getModeHeaderVals () {
       let stateBrightness = (roomState.whiteStrip + brightness229 + roomState.roof.brightness) / 3
       return roundTo2decimals(stateBrightness)
     case 'moodLight':
+    console.log(roomState.roof.color)
+    
       return {
         brightness: roundTo2decimals(roomState.roof.brightness),
         color: roomState.roof.color
@@ -67,7 +69,7 @@ function getModeHeaderVals () {
 
 // sets all switches to off besides the one recived as param
 function resetSwitches (dontReset) {
-
+  
   let all = false
   if (dontReset === undefined) all = true
   
@@ -95,12 +97,21 @@ function resetHeaders (dontReset) {
   }
 }
 
+function resetSliders () {
+  uiElements.sliders.maxLightWhiteStripSlider.val(0)
+  uiElements.sliders.maxLight229slider.val(0)
+  uiElements.sliders.maxLightRoofslider.val(0)
+  uiElements.sliders.moodRoofSlider.val(0)
+  uiElements.pickers.moodRoofPicker.spectrum('set', 'white')
+}
+
 // sets the color, brightness, slider, picker values of the mod controls
 function initModes () {
   switch (roomState.modeName) {
     case 'off' :
       resetSwitches()
       resetHeaders()
+      resetSliders()
       break
     case 'club':
       // header
@@ -108,6 +119,7 @@ function initModes () {
       uiElements.switches.club229Switch.prop('checked', true)
       resetSwitches(uiElements.switches.club229Switch)
       resetHeaders(uiElements.headers.club229Header)
+      resetSliders()
       break
     case 'maxLight':
       // header
@@ -116,6 +128,7 @@ function initModes () {
       uiElements.switches.maxLightSwitch.prop('checked', true)
       resetSwitches(uiElements.switches.maxLightSwitch)
       resetHeaders(uiElements.headers.maxLightHeader)
+      resetSliders()
       // sliders
       let brightness229 = (roomState.state229.state2.brightness +
         roomState.state229.state22.brightness + roomState.state229.state229.brightness) / 3
@@ -131,6 +144,7 @@ function initModes () {
       uiElements.switches.moodSwitch.prop('checked', true)
       resetSwitches(uiElements.switches.moodSwitch)
       resetHeaders(uiElements.headers.moodHeader)
+      resetSliders()
       // slider
       uiElements.sliders.moodRoofSlider.val(roomState.roof.brightness)
       // picker
@@ -142,6 +156,7 @@ function initModes () {
       uiElements.switches.lobbySwitch.prop('checked', true)
       resetSwitches(uiElements.switches.lobbySwitch)
       resetHeaders(uiElements.headers.lobbyHeader)
+      resetSliders()
       break
   }
 }

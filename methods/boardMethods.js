@@ -1,5 +1,4 @@
 const State = require('../models/RoomState')
-const sleep = require('sleep')
 let initBoard = function initBoard (boardComponents, five, board) {
   board.i2cConfig()
   boardComponents.strip2 = new five.Led.RGB({
@@ -31,22 +30,22 @@ let initBoard = function initBoard (boardComponents, five, board) {
 }
 
 let sendStateToBoard = function sendStateToBoard (state, boardComponents, board) {
-  applyStateToLocal(state, boardComponents)
   applyStateToRemote(state, board)
+  applyStateToLocal(state, boardComponents)
 }
 
 let applyStateToLocal = function applyStateToLocale (state, boardComponents) {
+  let mode = state.modeName
   if (state.modeName === 'off') {
     resetBoard(boardComponents)
     console.log('off')
     return
   }
-  if (state.modeName === 'club') {
+  if (state.modeName === 'club' || state.modeName === 'lobby') {
     resetBoard(boardComponents)
     boardComponents.strip2.intensity(10).color('red')
     boardComponents.strip22.intensity(10).color('blue')
     boardComponents.strip229.intensity(10).color('yellow')
-    
   } else {
     boardComponents.strip2.intensity(state.state229.state2.brightness).color('white')
     boardComponents.strip22.intensity(state.state229.state22.brightness).color('white')

@@ -15,18 +15,20 @@ const connectionMethods = require('./methods/conectionMethods')
 app.use(express.static('public')) // static serve;
 let board = new five.Board({port:'com17', repl: false })
 let state229 = {
-  state2: new RgbState(100),
-  state22: new RgbState(100),
-  state229: new RgbState(100)
+  state2: new RgbState(10),
+  state22: new RgbState(10),
+  state229: new RgbState(10)
 }
-let state = new State('maxLight', 100, state229, new RgbState(100), 0, 0)
+let state = new State('maxLight', 100, state229, new RgbState(10), 0, 0)
 let boardComponents = new BoardComponents() // this shit is global in all modules
 
 function writeState (socket = false, state) {
-  boardMethods.sendStateToBoard(state, boardComponents, board)
-  if (socket) {
-    connectionMethods.updateClients(socket, state)
+  if (socket === false) {
+    boardMethods.sendStateToBoard(state, boardComponents, board)
     boardMethods.applyStateToRemote(state, board)
+  } else {
+    connectionMethods.updateClients(socket, state)
+    boardMethods.sendStateToBoard(state, boardComponents, board)
   }
 }
 
