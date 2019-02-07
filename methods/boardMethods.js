@@ -1,5 +1,5 @@
 const State = require('../models/RoomState')
-
+const sleep = require('sleep')
 let initBoard = function initBoard (boardComponents, five, board) {
   board.i2cConfig()
   boardComponents.strip2 = new five.Led.RGB({
@@ -38,17 +38,26 @@ let sendStateToBoard = function sendStateToBoard (state, boardComponents, board)
 let applyStateToLocal = function applyStateToLocale (state, boardComponents) {
   if (state.modeName === 'off') {
     resetBoard(boardComponents)
+    console.log('off')
     return
   }
+  if (state.modeName === 'club') {
+    resetBoard(boardComponents)
+    boardComponents.strip2.intensity(10).color('red')
+    boardComponents.strip22.intensity(10).color('blue')
+    boardComponents.strip229.intensity(10).color('yellow')
+    
+  } else {
+    boardComponents.strip2.intensity(state.state229.state2.brightness).color('white')
+    boardComponents.strip22.intensity(state.state229.state22.brightness).color('white')
+    boardComponents.strip229.intensity(state.state229.state229.brightness).color('white')
+    boardComponents.stripWhite.intensity(state.whiteStrip)
+  }
   console.log('///////////////////////// LOCAL ///////////////////// \n ', state.modeName, state.state229, state.whiteStrip)
-  boardComponents.strip2.intensity(state.state229.state2.brightness)
-  boardComponents.strip22.intensity(state.state229.state22.brightness)
-  boardComponents.strip229.intensity(state.state229.state229.brightness)
-  boardComponents.stripWhite.intensity(state.whiteStrip)
 }
 
 let applyStateToRemote = function applyStateToRemote (state, board) {
-  //console.log('///////////////////////// REMOTE ///////////////////// \n ', state.modeName, state.roof, state.wallGreen, state.wallBlue)
+  console.log('///////////////////////// REMOTE ///////////////////// \n ', state.modeName, state.roof, state.wallGreen, state.wallBlue)
   let roofColors = getRoofColors(state.roof)
   let mode
   switch (state.modeName) {
@@ -56,13 +65,13 @@ let applyStateToRemote = function applyStateToRemote (state, board) {
       mode = 0 // mode
       break
     case 'club':
-      mode = 2  // mode
+      mode = 2 // mode
       break
     case 'lobby':
-      mode = 3  // mode
+      mode = 3 // mode
       break
     default:
-      mode = 1  // mode
+      mode = 1 // mode
       break
   }
 
