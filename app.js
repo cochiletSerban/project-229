@@ -23,9 +23,11 @@ let state = new State('maxLight', 100, state229, new RgbState(100), 0, 0)
 let boardComponents = new BoardComponents() // this shit is global in all modules
 
 function writeState (socket = false, state) {
-  if (socket) connectionMethods.updateClients(socket, state)
   boardMethods.sendStateToBoard(state, boardComponents, board)
-  boardMethods.applyStateToRemote(state, board)
+  if (socket) {
+    connectionMethods.updateClients(socket, state)
+    boardMethods.applyStateToRemote(state, board)
+  }
 }
 
 board.on('ready', function () {

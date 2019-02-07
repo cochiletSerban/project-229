@@ -54,6 +54,18 @@ function determineStateUpdateForSwitches (ev, modeName) {
  // state = JSON.parse(JSON.stringify(roomState))
   if (ev) {
     state.modeName = modeName
+    let state229 = {
+      state2: new RgbState(100),
+      state22: new RgbState(100),
+      state229: new RgbState(100)
+    }
+    switch(modeName) {
+      case 'maxLight':
+        state.whiteStrip = 100
+        state.state229 = state229
+        state.roof = new RgbState(100)
+        break
+    }
   } else if (!ev) {
     state.modeName = 'off'
   }

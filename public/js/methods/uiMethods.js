@@ -119,8 +119,6 @@ function initModes () {
       // sliders
       let brightness229 = (roomState.state229.state2.brightness +
         roomState.state229.state22.brightness + roomState.state229.state229.brightness) / 3
-    
-      
       uiElements.sliders.maxLightWhiteStripSlider.val(roomState.whiteStrip)
       uiElements.sliders.maxLight229slider.val(brightness229)
       uiElements.sliders.maxLightRoofslider.val(roomState.roof.brightness)
@@ -162,7 +160,7 @@ function updateUi (roomState) {
 }
 
 function updateState (newState) {
-  roomState = newState  
+  roomState = newState
   updateUi()
   socket.emit('updateState', roomState)
 }
