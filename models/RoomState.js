@@ -1,16 +1,23 @@
 const RgbState = require('./RgbState')
 module.exports = class RoomState {
-  constructor () {
-    this.modeName = 'off'
-    this.whiteStrip = 0
-    this.state229 = {
+  constructor (
+    modeName = 'off',
+    whiteStrip = 0,
+    state229 = {
       state2: new RgbState(),
       state22: new RgbState(),
       state229: new RgbState()
-    }
-    this.roof = new RgbState()
-    this.wallGreen = 0
-    this.wallBlue = 0
+    },
+    roof = new RgbState(),
+    wallGreen = 0,
+    wallBlue = 0
+  ) {
+    this.modeName = modeName
+    this.whiteStrip = whiteStrip
+    this.state229 = state229
+    this.roof = roof
+    this.wallGreen = wallGreen
+    this.wallBlue = wallBlue
   }
 }
 

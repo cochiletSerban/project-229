@@ -51,9 +51,33 @@ function listenToInputs () {
 // ////////////////////////////////////// //
 function determineStateUpdateForSwitches (ev, modeName) {
   let state = new RoomState() // creates new blank state on mod chage
-  state = JSON.parse(JSON.stringify(roomState))
+ // state = JSON.parse(JSON.stringify(roomState))
   if (ev) {
     state.modeName = modeName
+    let state229 = {
+      state2: new RgbState(100),
+      state22: new RgbState(100),
+      state229: new RgbState(100)
+    }
+    switch (modeName) {
+      case 'maxLight':
+        state =  new RoomState()
+        state.modeName = modeName
+        state.whiteStrip = 100
+        state.state229 = state229
+        state.roof = new RgbState(100)
+        break
+      case 'moodLight':
+        state =  new RoomState()
+        state.modeName = modeName
+        state.roof = new RgbState(100)
+        state.roof.color = 'rgb(255, 0, 0)'
+        break
+      case 'lobby':
+        state = new RoomState()
+        state.modeName = modeName
+        break
+    }
   } else if (!ev) {
     state.modeName = 'off'
   }
