@@ -48,7 +48,7 @@ let applyStateToLocal = function applyStateToLocale (state, boardComponents) {
 }
 
 let applyStateToRemote = function applyStateToRemote (state, board) {
-  //console.log('///////////////////////// REMOTE ///////////////////// \n ', state.modeName, state.roof, state.wallGreen, state.wallBlue)
+  console.log('///////////////////////// REMOTE ///////////////////// \n ', state.modeName, state.roof, state.wallGreen, state.wallBlue)
   let roofColors = getRoofColors(state.roof)
   let mode
   switch (state.modeName) {
