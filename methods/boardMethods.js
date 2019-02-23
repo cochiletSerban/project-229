@@ -36,10 +36,19 @@ let sendStateToBoard = function sendStateToBoard (state, boardComponents, board)
 
 let applyStateToLocal = function applyStateToLocale (state, boardComponents) {
 
+  if (state.modeName === 'strobe') {
+    if (state.whiteStrip > 0) {
+      boardComponents.stripWhite.intensity(100).blink(20)
+    } else {
+      boardComponents.stripWhite.intensity(100).stop()
+    }
+    return
+  }
   boardComponents.strip2.intensity(state.state229.state2.brightness).color(state.state229.state2.color)
   boardComponents.strip22.intensity(state.state229.state22.brightness).color(state.state229.state22.color)
   boardComponents.strip229.intensity(state.state229.state229.brightness).color(state.state229.state229.color)
   boardComponents.stripWhite.intensity(state.whiteStrip)
+
 
   console.log('///////////////////////// LOCAL ///////////////////// \n ', state.modeName, state.state229, state.whiteStrip)
 }
