@@ -2,3 +2,21 @@
 @import 'helpers.css';
 @import "../header-component/header.css";
 @import "../tab-group-component/tab-group.css";
+
+
+/* move to new component */
+#strobeMe {
+    background-color: red;
+    width: 100%;
+    min-height: 200px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+#whiteOn {
+    background-color: blue;
+    width: 100%;
+    min-height: 200px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}

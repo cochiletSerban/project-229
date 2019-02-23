@@ -19,7 +19,68 @@ const throttle = (func, limit) => {
   }
 }
 
+function pushed (modeName) {
+  let strobeOnState = JSON.parse(JSON.stringify(roomState))
+  strobeOnState.modeName = modeName
+  strobeOnState.whiteStrip = -1
+  updateState(strobeOnState)
+}
+
+function released (modeName) {
+  let strobeOffState = JSON.parse(JSON.stringify(roomState))
+  strobeOffState.modeName = modeName
+  strobeOffState.whiteStrip = roomState.whiteStrip
+  updateState(strobeOffState)
+}
+
 function listenToInputs () {
+  // for buttons // gloal config
+  let isTouchDevice = 'ontouchstart' in document.documentElement
+
+  // remove duplicate code
+
+  $('#strobeMe').mousedown(function (event) {
+    if (isTouchDevice === false) {
+      pushed('strobe')
+    }
+  })
+  $('#strobeMe').mouseup(function (event) {
+    if (isTouchDevice === false) {
+      released('strobe')
+    }
+  })
+  $('#strobeMe').on('touchstart', function () {
+    if (isTouchDevice) {
+      pushed('strobe')
+    }
+  })
+  $('#strobeMe').on('touchend', function () {
+    if (isTouchDevice) {
+      released('strobe')
+    }
+  })
+
+  $('#whiteOn').mousedown(function (event) {
+    if (isTouchDevice === false) {
+      pushed('whiteOn')
+    }
+  })
+  $('#whiteOn').mouseup(function (event) {
+    if (isTouchDevice === false) {
+      released('whiteOn')
+    }
+  })
+  $('#whiteOn').on('touchstart', function () {
+    if (isTouchDevice) {
+      pushed('whiteOn')
+    }
+  })
+  $('#whiteOn').on('touchend', function () {
+    if (isTouchDevice) {
+      released('whiteOn')
+    }
+  })
+
   // for sliders
   for (const key of Object.keys(uiElements.sliders)) {
     uiElements.sliders[key].on('input', getSliders.bind(null, key))
@@ -28,8 +89,6 @@ function listenToInputs () {
   // switches
   for (const key of Object.keys(uiElements.switches)) {
     uiElements.switches[key].on('click', (e) => {
-      // e.stopPropagation()
-      // e.stopImmediatePropagation()
       if (uiElements.switches[key].is(':checked')) {
         getMode(key, true)
       } else {

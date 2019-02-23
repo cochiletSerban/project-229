@@ -170,8 +170,22 @@ function updateUi (roomState) {
   initModes(roomState)
 }
 
+function isSateRemote (state) { // rename
+  switch (state.modeName) {
+    case 'strobe':
+    case 'whiteOn':
+      return false
+    default:
+      return true
+  }
+}
+
 function updateState (newState) {
-  roomState = newState
-  updateUi()
-  socket.emit('updateState', roomState)
+  if (!isSateRemote(newState)) {
+    socket.emit('updateState', newState)
+  } else {
+    roomState = newState
+    updateUi()
+    socket.emit('updateState', roomState)
+  }
 }
