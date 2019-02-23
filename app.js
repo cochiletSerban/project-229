@@ -19,7 +19,7 @@ let state229 = {
   state22: new RgbState(10),
   state229: new RgbState(10)
 }
-let state = new State('maxLight', 100, state229, new RgbState(10), 0, 0)
+let state = new State('maxLight', 50, state229, new RgbState(80), 0, 0)
 let boardComponents = new BoardComponents() // this shit is global in all modules
 
 function writeState (socket = false, state) {

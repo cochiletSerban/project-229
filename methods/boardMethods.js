@@ -35,23 +35,12 @@ let sendStateToBoard = function sendStateToBoard (state, boardComponents, board)
 }
 
 let applyStateToLocal = function applyStateToLocale (state, boardComponents) {
-  let mode = state.modeName
-  if (state.modeName === 'off') {
-    resetBoard(boardComponents)
-    console.log('off')
-    return
-  }
-  if (state.modeName === 'club' || state.modeName === 'lobby') {
-    resetBoard(boardComponents)
-    boardComponents.strip2.intensity(10).color('red')
-    boardComponents.strip22.intensity(10).color('blue')
-    boardComponents.strip229.intensity(10).color('yellow')
-  } else {
-    boardComponents.strip2.intensity(state.state229.state2.brightness).color('white')
-    boardComponents.strip22.intensity(state.state229.state22.brightness).color('white')
-    boardComponents.strip229.intensity(state.state229.state229.brightness).color('white')
-    boardComponents.stripWhite.intensity(state.whiteStrip)
-  }
+
+  boardComponents.strip2.intensity(state.state229.state2.brightness).color(state.state229.state2.color)
+  boardComponents.strip22.intensity(state.state229.state22.brightness).color(state.state229.state22.color)
+  boardComponents.strip229.intensity(state.state229.state229.brightness).color(state.state229.state229.color)
+  boardComponents.stripWhite.intensity(state.whiteStrip)
+
   console.log('///////////////////////// LOCAL ///////////////////// \n ', state.modeName, state.state229, state.whiteStrip)
 }
 
