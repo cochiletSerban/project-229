@@ -3,25 +3,25 @@ let initBoard = function initBoard (boardComponents, five, board) {
   board.i2cConfig()
   boardComponents.strip2 = new five.Led.RGB({
     pins: {
+      red: 8,
+      green: 9,
+      blue: 10
+    },
+    isAnode: false
+  })
+  boardComponents.strip22 = new five.Led.RGB({
+    pins: {
       red: 2,
       green: 3,
       blue: 4
     },
     isAnode: false
   })
-  boardComponents.strip22 = new five.Led.RGB({
+  boardComponents.strip229 = new five.Led.RGB({
     pins: {
       red: 5,
       green: 6,
       blue: 7
-    },
-    isAnode: false
-  })
-  boardComponents.strip229 = new five.Led.RGB({
-    pins: {
-      red: 8,
-      green: 9,
-      blue: 10
     },
     isAnode: false
   })
