@@ -59,7 +59,6 @@ function getModeHeaderVals () {
       return roundTo2decimals(stateBrightness)
     case 'moodLight':
     console.log(roomState.roof.color)
-    
       return {
         brightness: roundTo2decimals(roomState.roof.brightness),
         color: roomState.roof.color
@@ -69,10 +68,8 @@ function getModeHeaderVals () {
 
 // sets all switches to off besides the one recived as param
 function resetSwitches (dontReset) {
-  
   let all = false
   if (dontReset === undefined) all = true
-  
   let switches = uiElements.switches
   for (const key of Object.keys(switches)) {
     if (all || switches[key][0].id !== dontReset[0].id ) {
@@ -85,7 +82,6 @@ function resetSwitches (dontReset) {
 function resetHeaders (dontReset) {
   let all = false
 
-  
   if (dontReset === undefined) all = true
   let headers = uiElements.headers
   for (const key of Object.keys(headers)) {

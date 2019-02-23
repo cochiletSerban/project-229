@@ -1,7 +1,7 @@
 const throttle = (func, limit) => {
   let lastFunc
   let lastRan
-  return function() {
+  return function () {
     const context = this
     const args = arguments
     if (!lastRan) {
@@ -9,7 +9,7 @@ const throttle = (func, limit) => {
       lastRan = Date.now()
     } else {
       clearTimeout(lastFunc)
-      lastFunc = setTimeout(function() {
+      lastFunc = setTimeout(function () {
         if ((Date.now() - lastRan) >= limit) {
           func.apply(context, args)
           lastRan = Date.now()
@@ -51,31 +51,41 @@ function listenToInputs () {
 // ////////////////////////////////////// //
 function determineStateUpdateForSwitches (ev, modeName) {
   let state = new RoomState() // creates new blank state on mod chage
- // state = JSON.parse(JSON.stringify(roomState))
+  // state = JSON.parse(JSON.stringify(roomState))
   if (ev) {
     state.modeName = modeName
-    let state229 = {
-      state2: new RgbState(100),
-      state22: new RgbState(100),
-      state229: new RgbState(100)
-    }
     switch (modeName) {
       case 'maxLight':
-        state =  new RoomState()
+        let maxLightState229 = {
+          state2: new RgbState(20),
+          state22: new RgbState(20),
+          state229: new RgbState(20)
+        }
+        state = new RoomState()
         state.modeName = modeName
-        state.whiteStrip = 100
-        state.state229 = state229
-        state.roof = new RgbState(100)
+        state.whiteStrip = 50
+        state.state229 = maxLightState229
+        state.roof = new RgbState(80)
         break
       case 'moodLight':
-        state =  new RoomState()
+        state = new RoomState()
         state.modeName = modeName
         state.roof = new RgbState(100)
         state.roof.color = 'rgb(255, 0, 0)'
         break
+      case 'club':
       case 'lobby':
+        let clubState229 = {
+          state2: new RgbState(20, 'red'),
+          state22: new RgbState(20, 'yellow'),
+          state229: new RgbState(20, 'blue')
+        }
         state = new RoomState()
+        state.state229 = clubState229
         state.modeName = modeName
+        break
+      case 'off':
+        state = new RoomState()
         break
     }
   } else if (!ev) {
