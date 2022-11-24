@@ -1,454 +1,489 @@
 <div class="row center-align">
+  <div class="col s12 m12">
+    <!-- tab header -->
+    <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
+      <li class="tab"><a href="#presets" class="active">Presets</a></li>
+      <li class="tab"><a href="#advancedOptions">Advanced options</a></li>
+    </ul>
 
-    <div class="col s12 m12">
+    <!-- tab 1 -->
+    <div id="presets" class="col s12">
+      <!-- start of tab content -->
 
-        <!-- tab header -->
-        <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
-            <li class="tab"><a href="#presets" class="active">Presets</a></li>
-            <li class="tab"><a href="#advancedOptions">Advanced options</a></li>
-        </ul>
+      <!-- Club 229 -->
+      <!-- collapsibile header -->
+      <ul class="collection with-header">
+        <li>
+          <div class="collection-header valign-wrapper" id="club229Header">
+            <img src="../img/logo.png" width="80" alt="" srcset="" />
+            <div class="col s9 left-align">
+              <h5>Club</h5>
+            </div>
+            <div class="col s3 right-align">
+              <div class="switch">
+                <label>
+                  <input type="checkbox" id="club229Switch" />
+                  <span class="lever"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
 
-        <!-- tab 1 -->
-        <div id="presets" class="col s12">
-            <!-- start of tab content -->
+      <!-- Max Light -->
+      <!-- collapsibile header -->
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header valign-wrapper" id="maxLightHeader">
+            <i class="material-icons">all_inclusive</i>
+            <div class="col s9 left-align">
+              <h5>Max Light @0%</h5>
+            </div>
+            <div class="col s3 right-align">
+              <div class="switch">
+                <label>
+                  <input type="checkbox" id="maxLightSwitch" />
+                  <span class="lever"></span>
+                </label>
+              </div>
+            </div>
+          </div>
 
-            <!-- Club 229 -->
-            <!-- collapsibile header -->
-            <ul class="collection with-header">
-                <li>
-                    <div class="collection-header valign-wrapper" id="club229Header">
-                        <img src="../img/logo.png" width="80" alt="" srcset="">
-                        <div class="col s9 left-align">
-                            <h5>Club</h5>
-                        </div>
-                        <div class="col s3 right-align">
-                            <div class="switch">
-                                <label>
-                                    <input type="checkbox" id="club229Switch">
-                                    <span class="lever"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+          <!-- collapsible body  -->
 
-            <!-- Max Light -->
-            <!-- collapsibile header -->
-            <ul class="collapsible" data-collapsible="accordion">
-                <li>
-                    <div class="collapsible-header valign-wrapper" id="maxLightHeader">
-                        <i class="material-icons">all_inclusive</i>
-                        <div class="col s9 left-align">
-                            <h5>Max Light @0%</h5>
-                        </div>
-                        <div class="col s3 right-align">
-                            <div class="switch">
-                                <label>
-                                    <input type="checkbox" id="maxLightSwitch">
-                                    <span class="lever"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+          <div class="collapsible-body left-align">
+            <form action="#">
+              <!-- slider 1 -->
+              <div class="row valign-wrapper">
+                <div class="col valign-wrapper s3">
+                  <i class="small material-icons">border_top</i>Ws:
+                </div>
+                <div class="col s9">
+                  <p class="range-field">
+                    <input
+                      type="range"
+                      id="maxLightWhiteStripSlider"
+                      min="0"
+                      max="100"
+                      value="0"
+                    />
+                  </p>
+                </div>
+              </div>
+              <!-- slider 2 -->
+              <div class="row valign-wrapper">
+                <div class="col valign-wrapper s3">
+                  <i class="small material-icons">border_horizontal</i>229:
+                </div>
+                <div class="col s9">
+                  <p class="range-field">
+                    <input
+                      type="range"
+                      id="maxLight229slider"
+                      min="0"
+                      max="100"
+                      value="0"
+                    />
+                  </p>
+                </div>
+              </div>
+              <!-- slider 3 -->
+              <div class="row valign-wrapper">
+                <div class="col valign-wrapper s3">
+                  <i class="small material-icons">border_outer</i>roof:
+                </div>
+                <div class="col s9">
+                  <p class="range-field">
+                    <input
+                      type="range"
+                      id="maxLightRoofslider"
+                      min="0"
+                      max="100"
+                      value="0"
+                    />
+                  </p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </li>
+      </ul>
 
-                    <!-- collapsible body  -->
+      <!-- Mood Light -->
+      <!-- collapsibile header -->
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header valign-wrapper" id="moodHeader">
+            <i class="material-icons">insert_emoticon</i>
+            <div class="col s9 left-align">
+              <h5>Mood Light @0%</h5>
+            </div>
+            <div class="col s3 right-align">
+              <div class="switch">
+                <label>
+                  <input type="checkbox" id="moodSwitch" />
+                  <span class="lever"></span>
+                </label>
+              </div>
+            </div>
+          </div>
 
-                    <div class="collapsible-body left-align">
+          <!-- collapsible body  -->
 
-                        <form action="#">
-                            <!-- slider 1 -->
-                            <div class="row valign-wrapper">
-                                <div class="col  valign-wrapper s3">
-                                    <i class="small material-icons">border_top</i>Ws:
-                                </div>
-                                <div class="col s9">
-                                    <p class="range-field">
-                                        <input type="range" id="maxLightWhiteStripSlider" min="0" max="100" value="0" />
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- slider 2 -->
-                            <div class="row valign-wrapper">
-                                <div class="col  valign-wrapper s3">
-                                    <i class="small material-icons">border_horizontal</i>229:
-                                </div>
-                                <div class="col s9">
-                                    <p class="range-field">
-                                        <input type="range" id="maxLight229slider" min="0" max="100" value="0" />
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- slider 3 -->
-                            <div class="row valign-wrapper">
-                                <div class="col  valign-wrapper s3">
-                                    <i class="small material-icons">border_outer</i>roof:
-                                </div>
-                                <div class="col s9">
-                                    <p class="range-field">
-                                        <input type="range" id="maxLightRoofslider" min="0" max="100" value="0" />
-                                    </p>
-                                </div>
-                            </div>
+          <div class="collapsible-body left-align">
+            <form action="#">
+              <!-- slider 1 -->
+              <div class="row valign-wrapper">
+                <div class="col valign-wrapper s3">
+                  <i class="small material-icons">border_outer</i>
+                  roof:
+                </div>
+                <div class="col s6">
+                  <p class="range-field">
+                    <input
+                      type="range"
+                      id="moodRoofSlider"
+                      min="0"
+                      max="100"
+                      value="0"
+                    />
+                  </p>
+                </div>
+                <div class="col valign-wrapper s3">
+                  <input type="text" id="moodRoofPicker" class="right" />
+                </div>
+              </div>
+            </form>
+          </div>
+        </li>
+      </ul>
 
-                        </form>
-                    </div>
-                </li>
-            </ul>
+      <!-- Lobby -->
+      <ul class="collection with-header">
+        <li>
+          <div class="collection-header valign-wrapper" id="lobbyHeader">
+            <i class="material-icons">event_seat</i>
+            <div class="col s9 left-align">
+              <h5>Lobby</h5>
+            </div>
+            <div class="col s3 right-align">
+              <div class="switch">
+                <label>
+                  <input type="checkbox" id="lobbySwitch" />
+                  <span class="lever"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
 
-            <!-- Mood Light -->
-            <!-- collapsibile header -->
-            <ul class="collapsible" data-collapsible="accordion">
-                <li>
-                    <div class="collapsible-header valign-wrapper" id="moodHeader">
-                        <i class="material-icons">insert_emoticon</i>
-                        <div class="col s9 left-align">
-                            <h5>Mood Light @0%</h5>
-                        </div>
-                        <div class="col s3 right-align">
-                            <div class="switch">
-                                <label>
-                                    <input type="checkbox" id="moodSwitch">
-                                    <span class="lever"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- collapsible body  -->
-
-                    <div class="collapsible-body left-align">
-
-                        <form action="#">
-                            <!-- slider 1 -->
-                            <div class="row valign-wrapper">
-                                <div class="col  valign-wrapper s3">
-
-                                    <i class="small material-icons">border_outer</i>
-                                    roof:
-
-                                </div>
-                                <div class="col s6">
-                                    <p class="range-field">
-                                        <input type="range" id="moodRoofSlider" min="0" max="100" value="0" />
-                                    </p>
-                                </div>
-                                <div class="col  valign-wrapper s3">
-                                    <input type='text' id="moodRoofPicker" class="right" />
-                                </div>
-
-
-                            </div>
-
-                        </form>
-                    </div>
-                </li>
-            </ul>
-
-            <!-- Lobby -->
-            <ul class="collection with-header">
-                <li>
-                    <div class="collection-header valign-wrapper" id="lobbyHeader">
-                        <i class="material-icons">event_seat</i>
-                        <div class="col s9 left-align">
-                            <h5>Lobby</h5>
-                        </div>
-                        <div class="col s3 right-align">
-                            <div class="switch">
-                                <label>
-                                    <input type="checkbox" id="lobbySwitch">
-                                    <span class="lever"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-
-            <!-- end of tab 1 content -->
-        </div>
-
-
-        <!-- start of tab 2 content -->
-        <div id="advancedOptions" class="col s12">
-
-            <!-- White strip -->
-            <!-- collapsibile header -->
-            <ul class="collapsible" data-collapsible="accordion">
-                <li>
-                    <div class="collapsible-header valign-wrapper" id="led">
-                        <i class="small material-icons">border_top</i>
-                        <div class="col s9 left-align">
-                            <h5>White strip @0%</h5>
-                        </div>
-                        <div class="col s3 right-align">
-                            <div class="switch">
-                                <label>
-                                    <input type="checkbox" id="ledSwitch">
-                                    <span class="lever"></span>
-                                </label>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                    <!-- collapsible body  -->
-                    <div class="collapsible-body left-align">
-                        <form action="#">
-                            <p class="range-field">
-                                <input type="range" id="whiteStrip" min="0" max="100" value="0" />
-                            </p>
-                        </form>
-                    </div>
-                </li>
-            </ul>
-
-            <!-- 229 -->
-            <!-- collapsibile header -->
-            <ul class="collapsible" data-collapsible="accordion">
-                <li>
-                    <div class="collapsible-header valign-wrapper" id="led">
-                        <i class="small material-icons">border_horizontal</i>
-                        <div class="col s9 left-align">
-                            <h5>229</h5>
-                        </div>
-                        <div class="col s3 right-align">
-                            <div class="switch">
-                                <label>
-                                    <input type="checkbox" id="ledSwitch">
-                                    <span class="lever"></span>
-                                </label>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                    <!-- collapsible body  -->
-                    <div class="collapsible-body left-align">
-                        <form action="#">
-
-                            <!-- 229 -->
-                            <div class="row valign-wrapper">
-                                <div class="col  valign-wrapper s1">
-                                    229
-                                </div>
-                                <div class="col s5">
-                                    <p class="range-field">
-                                        <input type="range" id="whiteStrip" min="0" max="100" value="0" />
-                                    </p>
-                                </div>
-                                <div class="col s3">
-                                    <select>
-                                        <option value="" disabled selected>Animation</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
-                                    </select>
-                                </div>
-                                <div class="col  valign-wrapper s3">
-                                    <input type='text' id="picker1" class="right" />
-                                </div>
-                            </div>
-
-
-                            <!-- 2 -->
-                            <div class="row valign-wrapper">
-                                <div class="col  valign-wrapper s1">
-                                    2
-                                </div>
-                                <div class="col s5">
-                                    <p class="range-field">
-                                        <input type="range" id="whiteStrip" min="0" max="100" value="0" />
-                                    </p>
-                                </div>
-                                <div class="col s3">
-                                    <select>
-                                        <option value="" disabled selected>Animation</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
-                                    </select>
-                                </div>
-                                <div class="col  valign-wrapper s3">
-                                    <input type='text' id="picker2" class="right" />
-                                </div>
-                            </div>
-                            <!--  2 -->
-                            <div class="row valign-wrapper">
-                                <div class="col  valign-wrapper s1">
-                                    2
-                                </div>
-                                <div class="col s5">
-                                    <p class="range-field">
-                                        <input type="range" id="whiteStrip" min="0" max="100" value="0" />
-                                    </p>
-                                </div>
-                                <div class="col s3">
-                                    <select>
-                                        <option value="" disabled selected>Animation</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
-                                    </select>
-                                </div>
-                                <div class="col  valign-wrapper s3">
-                                    <input type='text' id="picker3" class="right" />
-                                </div>
-                            </div>
-                            <!--  9 -->
-                            <div class="row valign-wrapper">
-                                <div class="col  valign-wrapper s1">
-                                    9
-                                </div>
-                                <div class="col s5">
-                                    <p class="range-field">
-                                        <input type="range" id="whiteStrip" min="0" max="100" value="0" />
-                                    </p>
-                                </div>
-                                <div class="col s3">
-                                    <select>
-                                        <option value="" disabled selected>Animation</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
-                                    </select>
-                                </div>
-                                <div class="col  valign-wrapper s3">
-                                    <input type='text' id="picker4" class="right" />
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
-            </ul>
-
-            <!-- Roof -->
-            <!-- collapsibile header -->
-            <ul class="collapsible" data-collapsible="accordion">
-                <li>
-                    <div class="collapsible-header valign-wrapper" id="led">
-                        <i class="material-icons">border_outer</i>
-                        <div class="col s9 left-align">
-                            <h5>Roof @0%</h5>
-                        </div>
-                        <div class="col s3 right-align">
-                            <div class="switch">
-                                <label>
-                                    <input type="checkbox" id="ledSwitch">
-                                    <span class="lever"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- collapsible body  -->
-
-                    <div class="collapsible-body left-align">
-
-                        <form action="#">
-                            <!-- slider 1 -->
-                            <div class="row valign-wrapper">
-                                <div class="col  valign-wrapper s3">
-
-                                    <i class="small material-icons">border_outer</i>
-                                    roof:
-
-                                </div>
-                                <div class="col s5">
-                                    <p class="range-field">
-                                        <input type="range" id="whiteStrip" min="0" max="100" value="0" />
-                                    </p>
-                                </div>
-                                <div class="col s3">
-                                    <select>
-                                        <option value="" disabled selected>Animation</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
-                                    </select>
-                                </div>
-                                <div class="col  valign-wrapper s3">
-                                    <input type='text' id="picker5" class="right" />
-                                </div>
-
-
-                            </div>
-
-                        </form>
-                    </div>
-                </li>
-            </ul>
-
-            <!-- Wall green -->
-            <!-- collapsibile header -->
-            <ul class="collapsible" data-collapsible="accordion">
-                <li>
-                    <div class="collapsible-header valign-wrapper" id="led">
-                        <i class="small material-icons">border_left</i>
-                        <div class="col s9 left-align">
-                            <h5>Wall green @0%</h5>
-                        </div>
-                        <div class="col s3 right-align">
-                            <div class="switch">
-                                <label>
-                                    <input type="checkbox" id="ledSwitch">
-                                    <span class="lever"></span>
-                                </label>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                    <!-- collapsible body  -->
-                    <div class="collapsible-body left-align">
-                        <form action="#">
-                            <p class="range-field">
-                                <input type="range" id="whiteStrip" min="0" max="100" value="0" />
-                            </p>
-                        </form>
-                    </div>
-                </li>
-            </ul>
-
-            <!-- Wall blue -->
-            <!-- collapsibile header -->
-            <ul class="collapsible" data-collapsible="accordion">
-                <li>
-                    <div class="collapsible-header valign-wrapper" id="led">
-                        <i class="small material-icons">border_right</i>
-                        <div class="col s9 left-align">
-                            <h5>Wall blue @0%</h5>
-                        </div>
-                        <div class="col s3 right-align">
-                            <div class="switch">
-                                <label>
-                                    <input type="checkbox" id="ledSwitch">
-                                    <span class="lever"></span>
-                                </label>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                    <!-- collapsible body  -->
-                    <div class="collapsible-body left-align">
-                        <form action="#">
-                            <p class="range-field">
-                                <input type="range" id="whiteStrip" min="0" max="100" value="0" />
-                            </p>
-                        </form>
-                    </div>
-                </li>
-            </ul>
-
-            <!-- end of tab 2 content -->
-        </div>
-
-        <!-- end of tabs -->
+      <!-- end of tab 1 content -->
     </div>
 
+    <!-- start of tab 2 content -->
+    <div id="advancedOptions" class="col s12">
+      <!-- White strip -->
+      <!-- collapsibile header -->
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header valign-wrapper" id="led">
+            <i class="small material-icons">border_top</i>
+            <div class="col s9 left-align">
+              <h5>White strip @0%</h5>
+            </div>
+            <div class="col s3 right-align">
+              <div class="switch">
+                <label>
+                  <input type="checkbox" id="ledSwitch" />
+                  <span class="lever"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- collapsible body  -->
+          <div class="collapsible-body left-align">
+            <form action="#">
+              <p class="range-field">
+                <input
+                  type="range"
+                  id="whiteStrip"
+                  min="0"
+                  max="100"
+                  value="0"
+                />
+              </p>
+            </form>
+          </div>
+        </li>
+      </ul>
+
+      <!-- 229 -->
+      <!-- collapsibile header -->
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header valign-wrapper" id="led">
+            <i class="small material-icons">border_horizontal</i>
+            <div class="col s9 left-align">
+              <h5>229</h5>
+            </div>
+            <div class="col s3 right-align">
+              <div class="switch">
+                <label>
+                  <input type="checkbox" id="ledSwitch" />
+                  <span class="lever"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- collapsible body  -->
+          <div class="collapsible-body left-align">
+            <form action="#">
+              <!-- 229 -->
+              <div class="row valign-wrapper">
+                <div class="col valign-wrapper s1">229</div>
+                <div class="col s5">
+                  <p class="range-field">
+                    <input
+                      type="range"
+                      id="whiteStrip"
+                      min="0"
+                      max="100"
+                      value="0"
+                    />
+                  </p>
+                </div>
+                <div class="col s3">
+                  <select>
+                    <option value="" disabled selected>Animation</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                  </select>
+                </div>
+                <div class="col valign-wrapper s3">
+                  <input type="text" id="picker1" class="right" />
+                </div>
+              </div>
+
+              <!-- 2 -->
+              <div class="row valign-wrapper">
+                <div class="col valign-wrapper s1">2</div>
+                <div class="col s5">
+                  <p class="range-field">
+                    <input
+                      type="range"
+                      id="whiteStrip"
+                      min="0"
+                      max="100"
+                      value="0"
+                    />
+                  </p>
+                </div>
+                <div class="col s3">
+                  <select>
+                    <option value="" disabled selected>Animation</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                  </select>
+                </div>
+                <div class="col valign-wrapper s3">
+                  <input type="text" id="picker2" class="right" />
+                </div>
+              </div>
+              <!--  2 -->
+              <div class="row valign-wrapper">
+                <div class="col valign-wrapper s1">2</div>
+                <div class="col s5">
+                  <p class="range-field">
+                    <input
+                      type="range"
+                      id="whiteStrip"
+                      min="0"
+                      max="100"
+                      value="0"
+                    />
+                  </p>
+                </div>
+                <div class="col s3">
+                  <select>
+                    <option value="" disabled selected>Animation</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                  </select>
+                </div>
+                <div class="col valign-wrapper s3">
+                  <input type="text" id="picker3" class="right" />
+                </div>
+              </div>
+              <!--  9 -->
+              <div class="row valign-wrapper">
+                <div class="col valign-wrapper s1">9</div>
+                <div class="col s5">
+                  <p class="range-field">
+                    <input
+                      type="range"
+                      id="whiteStrip"
+                      min="0"
+                      max="100"
+                      value="0"
+                    />
+                  </p>
+                </div>
+                <div class="col s3">
+                  <select>
+                    <option value="" disabled selected>Animation</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                  </select>
+                </div>
+                <div class="col valign-wrapper s3">
+                  <input type="text" id="picker4" class="right" />
+                </div>
+              </div>
+            </form>
+          </div>
+        </li>
+      </ul>
+
+      <!-- Roof -->
+      <!-- collapsibile header -->
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header valign-wrapper" id="led">
+            <i class="material-icons">border_outer</i>
+            <div class="col s9 left-align">
+              <h5>Roof @0%</h5>
+            </div>
+            <div class="col s3 right-align">
+              <div class="switch">
+                <label>
+                  <input type="checkbox" id="ledSwitch" />
+                  <span class="lever"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- collapsible body  -->
+
+          <div class="collapsible-body left-align">
+            <form action="#">
+              <!-- slider 1 -->
+              <div class="row valign-wrapper">
+                <div class="col valign-wrapper s3">
+                  <i class="small material-icons">border_outer</i>
+                  roof:
+                </div>
+                <div class="col s5">
+                  <p class="range-field">
+                    <input
+                      type="range"
+                      id="whiteStrip"
+                      min="0"
+                      max="100"
+                      value="0"
+                    />
+                  </p>
+                </div>
+                <div class="col s3">
+                  <select>
+                    <option value="" disabled selected>Animation</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                  </select>
+                </div>
+                <div class="col valign-wrapper s3">
+                  <input type="text" id="picker5" class="right" />
+                </div>
+              </div>
+            </form>
+          </div>
+        </li>
+      </ul>
+
+      <!-- Wall green -->
+      <!-- collapsibile header -->
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header valign-wrapper" id="led">
+            <i class="small material-icons">border_left</i>
+            <div class="col s9 left-align">
+              <h5>Wall green @0%</h5>
+            </div>
+            <div class="col s3 right-align">
+              <div class="switch">
+                <label>
+                  <input type="checkbox" id="ledSwitch" />
+                  <span class="lever"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- collapsible body  -->
+          <div class="collapsible-body left-align">
+            <form action="#">
+              <p class="range-field">
+                <input
+                  type="range"
+                  id="whiteStrip"
+                  min="0"
+                  max="100"
+                  value="0"
+                />
+              </p>
+            </form>
+          </div>
+        </li>
+      </ul>
+
+      <!-- Wall blue -->
+      <!-- collapsibile header -->
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header valign-wrapper" id="led">
+            <i class="small material-icons">border_right</i>
+            <div class="col s9 left-align">
+              <h5>Wall blue @0%</h5>
+            </div>
+            <div class="col s3 right-align">
+              <div class="switch">
+                <label>
+                  <input type="checkbox" id="ledSwitch" />
+                  <span class="lever"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- collapsible body  -->
+          <div class="collapsible-body left-align">
+            <form action="#">
+              <p class="range-field">
+                <input
+                  type="range"
+                  id="whiteStrip"
+                  min="0"
+                  max="100"
+                  value="0"
+                />
+              </p>
+            </form>
+          </div>
+        </li>
+      </ul>
+
+      <!-- end of tab 2 content -->
+    </div>
+
+    <!-- end of tabs -->
+  </div>
 </div>

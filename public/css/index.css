@@ -1,4 +1,4 @@
 @import "_vars.css";
-@import 'helpers.css';
+@import "helpers.css";
 @import "../header-component/header.css";
 @import "../tab-group-component/tab-group.css";

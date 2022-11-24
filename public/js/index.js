@@ -1,4 +1,4 @@
-const socket = io.connect('192.168.1.101:3000/')
+const socket = io.connect("192.168.0.138:3000/");
 
 // var roomState = new RoomState()
 // roomState.modeName = 'maxLight'
@@ -10,8 +10,8 @@ const socket = io.connect('192.168.1.101:3000/')
 // roomState.state229.state229.brightness = 127
 
 function componentsLoaded() {
-  socket.on('saInceapaNebunia', (initState) => {
-    window.roomState = initState
-    initUi()
-  })
+  socket.on("saInceapaNebunia", (initState) => {
+    window.roomState = initState;
+    initUi();
+  });
 }
